@@ -12,16 +12,28 @@ namespace MovieCollection.Models
         {
 
         }
+
         public DbSet<ApplicationResponse> Responses { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+                    new Category { CategoryId = 1, CategoryName = "Action/Adventure" },
+                    new Category { CategoryId = 2, CategoryName = "Comedy" },
+                    new Category { CategoryId = 3, CategoryName = "Drama" },
+                    new Category { CategoryId = 4, CategoryName = "Family" },
+                    new Category { CategoryId = 5, CategoryName = "Horror/Suspense" },
+                    new Category { CategoryId = 6, CategoryName = "Miscellaneous" },
+                    new Category { CategoryId = 7, CategoryName = "Television" },
+                    new Category { CategoryId = 8, CategoryName = "VHS" }
+                );
             mb.Entity<ApplicationResponse>().HasData(
 
                     new ApplicationResponse
                     {
                         MovieId = 1,
-                        Category = "Comedy",
+                        CategoryId = 2,
                         Title = "Better Off Dead",
                         Year = 1985,
                         Director = "Savage Steve Holland",
@@ -33,7 +45,7 @@ namespace MovieCollection.Models
                     new ApplicationResponse
                     {
                         MovieId = 2,
-                        Category = "Drama",
+                        CategoryId = 3,
                         Title = "La La Land",
                         Year = 2016,
                         Director = "Damien Chazelle",
@@ -45,7 +57,7 @@ namespace MovieCollection.Models
                     new ApplicationResponse
                     {
                         MovieId = 3,
-                        Category = "Family",
+                        CategoryId = 4,
                         Title = "Home Alone",
                         Year = 1990,
                         Director = "Christ Columbus",
